@@ -1,0 +1,15 @@
+cat >> .gitignore << 'EOF'
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.coverage
+
+# Variáveis de ambiente (chaves e senhas)
+.env
+
+# Node / React
+node_modules/
+dist/
+EOF

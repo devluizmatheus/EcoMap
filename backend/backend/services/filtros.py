@@ -18,7 +18,7 @@ def filtrar_por_materiais(
         if any(m in ponto.materiais for m in materiais)
     ]
 
-
+    
 def distancia_metros(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     # Fórmula de Haversine
     lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])

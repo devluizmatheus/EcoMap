@@ -20,7 +20,7 @@ class Geocodificacao(Coordenadas):
 
 
 class PontoReciclagem(BaseModel):
-    id: int = Field(..., description="ID do elemento no OpenStreetMap")
+    id: int | str = Field(..., description="Identificador do ponto (OSM ou Geoapify)")
     nome: str | None = None
     endereco: str | None = None
     lat: float

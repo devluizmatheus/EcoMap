@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { listarMateriais } from "../services/api";
 
-const NOMES = {
-  papel: "Papel",
-  plastico: "Plástico",
-  vidro: "Vidro",
-  metal: "Metal",
-  eletronico: "Eletrônico",
-};
+import { NOMES } from "../materiais";
 
 export default function Filtros({ selecionados, onAlterar }) {
   const [materiais, setMateriais] = useState([]);

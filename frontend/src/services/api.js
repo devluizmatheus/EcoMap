@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || window.location.origin;
 
 async function pedir(caminho, parametros = {}) {
   const url = new URL(caminho, API_URL);
@@ -11,11 +11,17 @@ async function pedir(caminho, parametros = {}) {
     }
   }
 
-  const resposta = await fetch(url);
-  const dados = await resposta.json();
+  let resposta;
+  try {
+    resposta = await fetch(url);
+  } catch {
+    throw new Error("Não foi possível conectar ao servidor. Verifique sua conexão.");
+  }
+
+  const dados = await resposta.json().catch(() => null);
 
   if (!resposta.ok) {
-    throw new Error(dados.detail ?? "Erro ao falar com o servidor.");
+    throw new Error(dados?.detail ?? "O servidor está indisponível. Tente novamente em instantes.");
   }
   return dados;
 }

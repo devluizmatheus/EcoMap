@@ -15,4 +15,4 @@ COPY backend ./backend
 
 EXPOSE 8000
 
-CMD ["fastapi", "run", "backend/main.py", "--port", "8000"]
+CMD ["sh", "-c", "fastapi run backend/main.py --port ${PORT:-8000}"]
